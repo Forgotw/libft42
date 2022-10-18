@@ -6,7 +6,7 @@
 /*   By: lsohler <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 14:44:20 by lsohler           #+#    #+#             */
-/*   Updated: 2022/10/15 16:33:44 by lsohler          ###   ########.fr       */
+/*   Updated: 2022/10/18 13:26:08 by lsohler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,71 +14,71 @@
 #include <stdlib.h>
 #include <string.h>
 
-char *ft_strtrim(char const *s1, char const *set)
+int ft_tabpos1(char const *s1, char const *set)
 {
 	int	i;
-	int	j;
-	int y;
-	int x;
-	char *s2;
+	int	y;
 
 	i = 0;
-	j = strlen(s1);
 	y = 0;
-	x = 0;
-	while (s1[i] != '\0')
-	{
-		while (set[y] != '\0')
+	while (set[i] != '\0')
+	{	
+		if (s1[y] == set[i])
 		{
-			while (set[y] == s1[i])
-			{
-				i++;
-				j--;
-			}
 			y++;
+			i = 0;
 		}
-		y = 0;
-		i++;
+		if (s1[y] != set[i])
+		{
+			i++;
+		}
 	}
+	return (y);
+}
+
+int ft_tabpos2(char const *s1, char const *set)
+{
+	int	i;
+	int	y;
+
+	y = ft_strlen(s1) - 1;
 	i = 0;
-	s2 = malloc(sizeof(char) * 150);
-	if (!s2)
-		return (NULL);
-/*	while (s1[i] != '\0')
+	while (set[i] != '\0')
 	{
-		while (set[y] != '\0')
+		if (s1[y] == set[i]) //|| s1[y] == '\0')
 		{
-			while (set[y] == s1[i])
-				i++;
-			y++;
+			y--;
+			i = 0;
 		}
-		s2[x] = s1[i];
-		x++;
-		y = 0;
-		i++;
-	}*/
-	while (s1[i] != '\0')
-	{
-		while (set[y] != '\0')
+		if (s1[y] != set[i])
 		{
-			if (set[y] != s1[i])
-				y++;
-			else
-			{
-				i++;
-				y = 0;
-			}
+			i++;
 		}
-		s2[x] = s1[i];
-		x++;
-		y = 0;
 	}
-	return(s2);
+	return (y);
+}
+
+char *ft_strtrim(char const *s1, char const *set)
+{
+	int x;
+	int	y;
+	char *s2;
+
+	x = ft_tabpos1(s1, set);
+	y = ft_tabpos2(s1, set);
+	s2 = ft_strndup(&s1[x], y - x  + 1);
+	return (s2);
 }
 
 int main(int ac, char **av)
 {
 	(void)ac;
+	int x;
+	int y;
+
+	x = ft_tabpos1(av[1], av[2]);
+	y = ft_tabpos2(av[1], av[2]);
 	printf("%s\n%s\n", av[1], av[2]);
 	printf("%s\n", ft_strtrim(av[1], av[2]));
+	printf("%i\n%i\n", x, y);
 }
