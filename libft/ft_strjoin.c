@@ -6,42 +6,24 @@
 /*   By: lsohler <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 14:32:13 by lsohler           #+#    #+#             */
-/*   Updated: 2022/10/15 14:44:11 by lsohler          ###   ########.fr       */
+/*   Updated: 2022/10/21 12:37:25 by lsohler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <libft.h>
 
-char *ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int i;
-	int	j;
-	char *s3;
+	int		i;
+	int		j;
+	char	*s3;
 
 	j = 0;
 	i = 0;
-	s3 = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)));
+	s3 = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
 	if (!s3)
 		return (NULL);
-	while (s1[i] != '\0')
-	{
-		s3[i] = s1[i];
-		i++;
-	}
-	while (s2[j] != '\0')
-	{
-		s3[i+j] = s2[j];
-		j++;
-	}
-
+	ft_strlcpy(s3, s1, ft_strlen(s1) + 1);
+	ft_strlcat(s3, s2, ft_strlen(s2) + ft_strlen(s1) + 1);
 	return (s3);
-}
-
-int main(int ac, char **av)
-{
-	(void)ac;
-	printf("%s\n%s\n", av[1], av[2]);
-	printf("%s\n", ft_strjoin(av[1], av[2]));
 }

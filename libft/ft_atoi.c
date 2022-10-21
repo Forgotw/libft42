@@ -6,22 +6,24 @@
 /*   By: lsohler <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 13:00:03 by lsohler           #+#    #+#             */
-/*   Updated: 2022/10/15 13:31:06 by lsohler          ###   ########.fr       */
+/*   Updated: 2022/10/21 12:29:13 by lsohler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include <libft.h>
 
-int ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int	i;
 	int	sign;
-	int res;
+	int	res;
 
 	i = 0;
 	sign = 1;
 	res = 0;
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\r'
+		|| str[i] == '\v' || str[i] == '\f' || str[i] == ' ')
+		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
@@ -34,12 +36,4 @@ int ft_atoi(char *str)
 		i++;
 	}
 	return (res * sign);
-}
-
-int main(int ac, char **av)
-{
-	(void)ac;
-
-	printf("%i\n", atoi(av[1]));
-	printf("%i\n", ft_atoi(av[1]));
 }

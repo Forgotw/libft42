@@ -6,11 +6,13 @@
 /*   By: lsohler <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 11:44:09 by lsohler           #+#    #+#             */
-/*   Updated: 2022/10/10 11:49:23 by lsohler          ###   ########.fr       */
+/*   Updated: 2022/10/19 12:59:13 by lsohler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+#include <libft.h>
+
+size_t	ft_strlen(const char *str)
 {
 	int	i;
 

@@ -5,12 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsohler <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/15 12:27:55 by lsohler           #+#    #+#             */
-/*   Updated: 2022/10/15 12:29:12 by lsohler          ###   ########.fr       */
+/*   Created: 2022/10/19 14:37:58 by lsohler           #+#    #+#             */
+/*   Updated: 2022/10/19 15:00:56 by lsohler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(const char *s1,const char *s2, size_t n)
+#include <libft.h>
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 
