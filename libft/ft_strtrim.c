@@ -6,7 +6,7 @@
 /*   By: lsohler <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 14:44:20 by lsohler           #+#    #+#             */
-/*   Updated: 2022/10/19 12:53:42 by lsohler          ###   ########.fr       */
+/*   Updated: 2022/10/26 11:15:01 by lsohler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	x = ft_tabpos1(s1, set);
 	y = ft_tabpos2(s1, set);
+	if (y - x < 0)
+		return (ft_strndup(s1, 0));
 	s2 = ft_strndup(&s1[x], y - x + 1);
 	return (s2);
 }
